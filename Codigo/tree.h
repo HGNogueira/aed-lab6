@@ -50,5 +50,6 @@ void PosFixed (Node *root, int n);
 void sweepDepth (Node *root, int n);
 void sweepBreadth (Node *root);
 Boolean isTreeOrdered(Node *root);
+int TreeHeight(Node *, int);
 Boolean isTreeBalanced(Node *root);
 #endif

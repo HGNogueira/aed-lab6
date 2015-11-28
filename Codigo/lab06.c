@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
     printf("Breath First:\n");
     sweepBreadth(root);
     putchar('\n');
-    /* Remove comments when implemented
      
     if (isTreeOrdered(root))
         printf("The tree is ordered...!\n");
@@ -77,7 +76,8 @@ int main(int argc, char *argv[])
         printf("The tree is balanced...!\n");
     else
         printf("The tree is not balanced...!\n");
-    */
+
+    fprintf(stdout, "The height of the tree is %d\n", TreeHeight(root, 0));
     FreeTree(root);
     return (0);
 }

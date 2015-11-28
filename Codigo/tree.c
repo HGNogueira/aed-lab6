@@ -291,8 +291,20 @@ void sweepBreadth(Node *root)
 
 Boolean isTreeOrdered(Node * root)
 {
-    /* Insert code */
-    
+    if(root == NULL) return TRUE;
+    if(isTreeOrdered(root->left) == FALSE)
+        return FALSE;
+    if(isTreeOrdered(root->right) == FALSE)
+        return FALSE;
+
+    if( root->right != NULL)
+        if( root->right->value <= root->value)
+            return FALSE;
+
+    if( root->left != NULL)
+        if( root->left->value >= root->value)
+            return FALSE;
+
     return TRUE;
 }
 
@@ -309,11 +321,33 @@ Boolean isTreeOrdered(Node * root)
  * Description: checks if a tree is AVL balanced
  *
  *****************************************************************************/
+int TreeHeight(Node *root, int level){
+    int hR, hL;
+    if(root == NULL)
+        return level;
+    if((hR = TreeHeight(root->right, level + 1)) >= (hL = TreeHeight(root->left, level + 1)))
+        return hR;
+    else
+        return hL;
+}
 
 Boolean isTreeBalanced(Node * root)
 {
-    /* Insert code */
-    
+    int hR = 1, hL = 1;
+    if(root == NULL) return TRUE;
+    if(isTreeBalanced(root->left) == FALSE)
+        return FALSE;
+    if(isTreeBalanced(root->right) == FALSE)
+        return FALSE;
+
+    if(root->right != NULL)
+        hR = TreeHeight(root->right, 0);
+    if(root->left != NULL)
+        hL = TreeHeight(root->left, 0);
+
+    if( (hR-hL)*(hR-hL) <= 1)
+        return TRUE;
+
     return FALSE;
 }
 
