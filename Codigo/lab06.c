@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
     printf("\nPreFix dump:\n");
     PreFixed(root, 0);
     putchar('\n');
-    /* Remove comments when implemented
     printf("\nIn-Fix:\n");
     InFixed(root, 0);
     putchar('\n');
@@ -67,6 +66,7 @@ int main(int argc, char *argv[])
     printf("Breath First:\n");
     sweepBreadth(root);
     putchar('\n');
+    /* Remove comments when implemented
      
     if (isTreeOrdered(root))
         printf("The tree is ordered...!\n");

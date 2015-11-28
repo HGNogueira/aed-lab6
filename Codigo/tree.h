@@ -1,3 +1,5 @@
+#ifndef __tree__h
+#define __tree__h 1
 /******************************************************************************
  *
  * File Name: tree.h
@@ -49,4 +51,4 @@ void sweepDepth (Node *root, int n);
 void sweepBreadth (Node *root);
 Boolean isTreeOrdered(Node *root);
 Boolean isTreeBalanced(Node *root);
-
+#endif

@@ -21,8 +21,9 @@
  *****************************************************************************/
 
 #include "tree.h"
+#include "queue.h"
 
-struct {
+struct _Node{
   int value;
   struct _Node *left, *right;
 };
@@ -122,6 +123,7 @@ void FreeTree(Node * root)
     }
 }
 
+
 /******************************************************************************
  * spaces()
  *
@@ -183,7 +185,12 @@ void PreFixed(Node *root, int n)
 void InFixed(Node *root, int n)
 {
 
-  /* Insert code */
+  if (root != NULL) {
+    spaces(n);
+    InFixed(root->left, n + 1);
+    printf("%d\n", root->value);
+    InFixed(root->right, n + 1);
+  }
 
   return;
 }
@@ -204,7 +211,12 @@ void InFixed(Node *root, int n)
 void PosFixed(Node *root, int n)
 {
 
-  /* Insert code */
+  if (root != NULL) {
+    spaces(n);
+    PosFixed(root->left, n + 1);
+    PosFixed(root->right, n + 1);
+    printf("%d\n", root->value);
+  }
 
   return;
 }
@@ -224,8 +236,8 @@ void PosFixed(Node *root, int n)
 
 void sweepDepth(Node *root, int n)
 {
+  PreFixed(root, 0);
 
-  /* Insert code */
   return;
 }
 
@@ -244,8 +256,22 @@ void sweepDepth(Node *root, int n)
 
 void sweepBreadth(Node *root)
 {
-    
-    /* Insert code */
+    Queue *Q;
+    Element *t;
+
+    Q = QueueNew();
+    InsertLast(Q, root, 0);   /* inserir na fila o primeiro nó, a origem */
+
+    t = GetFirst(Q);
+    while(t != NULL){
+        spaces(t->level);
+        fprintf(stdout,"%d\n", (t->node)->value);
+        if((t->node)->left != NULL)
+            InsertLast(Q, (t->node)->left, t->level + 1);
+        if((t->node)->right != NULL)
+            InsertLast(Q, (t->node)->right, t->level + 1);
+        t = GetFirst(Q);
+    }
     
     return;
 }
