@@ -1,3 +1,5 @@
+#ifndef __queue__h
+#define __queue__h 1
 /******************************************************************************
  *
  * File Name: queue.h
@@ -17,6 +19,7 @@
  * DIAGNOSTICS
  *
  *****************************************************************************/
+#include"tree.h"
 
 
 typedef struct _element {
@@ -34,3 +37,6 @@ typedef struct _queue {
 Queue *QueueNew();                    /* creates empty list */
 Element *GetFirst(Queue*);            /* get first element of the queue */
 void  InsertLast(Queue*, Node*, int);      /* insertion at the end of queue */
+void QueuePrint(Queue *Q);
+
+#endif
